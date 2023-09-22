@@ -98,7 +98,7 @@ int main(void)
 	
 	
 	lcd_init(0, RED);
-	printf("程序功能:LCD测试\r\n");
+	printf("程序功能:LCD按下KEY_UP刷屏\r\n");
 //	HAL_TIM_Base_Start_IT(&htim7);
 	
 	HAL_UARTEx_ReceiveToIdle_IT(&huart1, idle_rec_buf, 100);	/* 每次使用发生中断后不会自动恢复,要再次使用这个函数 */
@@ -108,15 +108,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-//		uint8_t key = Get_key_with_undo(20);
-//		if(key == key_up_down)
-//		{
-//			
-//		}
-//		if(key == key0_down)
-//		{
+		uint8_t key = Get_key_with_undo(20);
+		if(key == key_up_down)
+		{
+			uint16_t num = RNG_GetRandomNumber(10000, 65535);
+			lcd_clear(num);
+		}
+		if(key == key0_down)
+		{
 
-//		}
+		}
 
     /* USER CODE END WHILE */
 
