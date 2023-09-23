@@ -35,7 +35,6 @@ extern "C" {
 #include "stdio.h"
 #include "string.h"
 
-#include ".\LED\led.h"
 #include ".\PRIVATE_CFG\private_cfg.h"
 /* USER CODE END Includes */
 
