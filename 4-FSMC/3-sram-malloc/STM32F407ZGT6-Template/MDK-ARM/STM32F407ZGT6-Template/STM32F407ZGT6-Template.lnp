@@ -29,8 +29,8 @@
 "stm32f407zgt6-template\stm32f4xx_hal_uart.o"
 "stm32f407zgt6-template\system_stm32f4xx.o"
 "stm32f407zgt6-template\tftlcd.o"
-"stm32f407zgt6-template\private_cfg.o"
 "stm32f407zgt6-template\malloc.o"
+"stm32f407zgt6-template\private_cfg.o"
 --library_type=microlib --strict --scatter "STM32F407ZGT6-Template\STM32F407ZGT6-Template.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

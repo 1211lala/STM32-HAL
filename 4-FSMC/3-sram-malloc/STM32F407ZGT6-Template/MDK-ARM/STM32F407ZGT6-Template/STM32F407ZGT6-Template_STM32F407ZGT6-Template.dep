@@ -1,6 +1,6 @@
 Dependencies for Project 'STM32F407ZGT6-Template', Target 'STM32F407ZGT6-Template': (DO NOT MODIFY !)
 F (startup_stm32f407xx.s)(0x650FFE8F)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 525" --pd "_RTE_ SETA 1" --pd "STM32F407xx SETA 1"--list startup_stm32f407xx.lst --xref -o stm32f407zgt6-template\startup_stm32f407xx.o --depend stm32f407zgt6-template\startup_stm32f407xx.d)
-F (../Core/Src/main.c)(0x651012D9)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\main.o --omf_browse stm32f407zgt6-template\main.crf --depend stm32f407zgt6-template\main.d)
+F (../Core/Src/main.c)(0x65102579)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\main.o --omf_browse stm32f407zgt6-template\main.crf --depend stm32f407zgt6-template\main.d)
 I (../Core/Inc/main.h)(0x65100AF3)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x64F73842)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x650D8733)
@@ -1083,50 +1083,6 @@ I (../Core/Inc/tim.h)(0x650D8733)
 I (../PublicDriver/./MALLOC/malloc.h)(0x65100B37)
 I (..\PublicDriver\TFTLCD\lcdfont.h)(0x650D8733)
 I (..\PublicDriver\TFTLCD\lcd_ex.c)(0x650D8733)
-F (..\PublicDriver\PRIVATE_CFG\private_cfg.c)(0x650D8733)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\private_cfg.o --omf_browse stm32f407zgt6-template\private_cfg.crf --depend stm32f407zgt6-template\private_cfg.d)
-I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x650D8733)
-I (../Core/Inc/main.h)(0x65100AF3)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x64F73842)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x650D8733)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x64F73842)
-I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x64F7381C)
-I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x64F7381C)
-I (../Drivers/CMSIS/Include/core_cm4.h)(0x64F7381F)
-I (D:\SoftWare\Keil_MDK\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
-I (../Drivers/CMSIS/Include/cmsis_version.h)(0x64F7381F)
-I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x64F7381F)
-I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x64F7381F)
-I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x64F7381F)
-I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x64F7381C)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x64F73842)
-I (D:\SoftWare\Keil_MDK\ARM\ARMCC\include\stddef.h)(0x599ECD2C)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rng.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x64F73842)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x64F73842)
-I (D:\SoftWare\Keil_MDK\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
-I (D:\SoftWare\Keil_MDK\ARM\ARMCC\include\string.h)(0x599ECD2C)
-I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x651011C4)
-I (../PublicDriver/./MALLOC/malloc.h)(0x65100B37)
-I (../Core/Inc/usart.h)(0x650D8733)
-I (D:\SoftWare\Keil_MDK\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
-I (../Core/Inc/rng.h)(0x650D8733)
-I (../Core/Inc/tim.h)(0x650D8733)
 F (..\PublicDriver\MALLOC\malloc.c)(0x65100BDE)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\malloc.o --omf_browse stm32f407zgt6-template\malloc.crf --depend stm32f407zgt6-template\malloc.d)
 I (../PublicDriver/./MALLOC/malloc.h)(0x65100B37)
 I (../Core/Inc/main.h)(0x65100AF3)
@@ -1171,4 +1127,48 @@ I (D:\SoftWare\Keil_MDK\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
 I (../Core/Inc/rng.h)(0x650D8733)
 I (../Core/Inc/tim.h)(0x650D8733)
 I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x651011C4)
+F (..\PublicDriver\PRIVATE_CFG\private_cfg.c)(0x650D8733)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\private_cfg.o --omf_browse stm32f407zgt6-template\private_cfg.crf --depend stm32f407zgt6-template\private_cfg.d)
+I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x650D8733)
+I (../Core/Inc/main.h)(0x65100AF3)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x64F73842)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x650D8733)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x64F73842)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x64F7381C)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x64F7381C)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x64F7381F)
+I (D:\SoftWare\Keil_MDK\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x64F7381F)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x64F7381F)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x64F7381F)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x64F7381F)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x64F7381C)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x64F73842)
+I (D:\SoftWare\Keil_MDK\ARM\ARMCC\include\stddef.h)(0x599ECD2C)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rng.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x64F73842)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x64F73842)
+I (D:\SoftWare\Keil_MDK\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (D:\SoftWare\Keil_MDK\ARM\ARMCC\include\string.h)(0x599ECD2C)
+I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x651011C4)
+I (../PublicDriver/./MALLOC/malloc.h)(0x65100B37)
+I (../Core/Inc/usart.h)(0x650D8733)
+I (D:\SoftWare\Keil_MDK\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
+I (../Core/Inc/rng.h)(0x650D8733)
+I (../Core/Inc/tim.h)(0x650D8733)
 F (..\README\readme.txt)(0x650D8733)()

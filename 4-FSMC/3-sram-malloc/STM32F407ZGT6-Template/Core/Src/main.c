@@ -36,7 +36,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define SRAM_START_ADDRESS 0x68000000UL
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -123,10 +123,10 @@ int main(void)
 			wrt = mymalloc(SRAMEX, 2*1024);	/* 给地址分配内存 */
 			if(wrt != NULL)
 			{
-				sprintf((char*)wrt, "hello worldqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqppp \
-															hello worldqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqppp \
-															hello worldqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqppp \
-															qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+				sprintf((char*)wrt, "hello worldqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqppp\
+														 helloworldqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqppp\
+														 helloworldqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqppp\
+														 qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
 				printf("%s\r\n", wrt);
 			}
 			
