@@ -123,10 +123,7 @@ int main(void)
 			wrt = mymalloc(SRAMEX, 2*1024);	/* 给地址分配内存 */
 			if(wrt != NULL)
 			{
-				sprintf((char*)wrt, "hello worldqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqppp\
-														 helloworldqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqppp\
-														 helloworldqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqppp\
-														 qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+				sprintf((char*)wrt, "hello worldqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqppphelloworldqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqppphelloworldqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqpppqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
 				printf("%s\r\n", wrt);
 			}
 			

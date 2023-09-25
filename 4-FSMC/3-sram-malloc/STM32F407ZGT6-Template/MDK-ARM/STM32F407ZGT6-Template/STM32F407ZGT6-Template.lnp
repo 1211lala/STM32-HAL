@@ -31,7 +31,7 @@
 "stm32f407zgt6-template\tftlcd.o"
 "stm32f407zgt6-template\malloc.o"
 "stm32f407zgt6-template\private_cfg.o"
---library_type=microlib --strict --scatter "STM32F407ZGT6-Template\STM32F407ZGT6-Template.sct"
+--strict --scatter "STM32F407ZGT6-Template\STM32F407ZGT6-Template.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "STM32F407ZGT6-Template.map" -o STM32F407ZGT6-Template\STM32F407ZGT6-Template.axf
