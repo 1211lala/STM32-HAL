@@ -1,4 +1,5 @@
-创建时间2023.9.26  工程内容:使用SSD1306驱动128*32的oled屏幕(软件IIC)
+创建时间2023.9.26  工程内容:使用SSD1306驱动128*32的oled屏幕(软件IIC) 	
+参考连接 https://www.bilibili.com/video/BV19u4y197df/?spm_id_from=333.1007.top_right_bar_window_history.content.click
 
 
 
