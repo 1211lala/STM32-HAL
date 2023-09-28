@@ -111,29 +111,31 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+	uint32_t color[] = {0XFF0000, 0X00FF00, 0X0000FF, 0XF28500, 0X36BF36, 0X4D80E6,	0X0D33FF, 0X800080, 0XC71585, 0XFF80BF};
   while (1)
   {
+		static char key_num;
 		uint8_t key = Get_key_with_undo(20);
 		if(key == key_up_down)
 		{
-			for(int i=0; i<WS2812_NUM; i++)
-			{
-				uint8_t r =RNG_GetRandomNumber(0, 255);
-				uint8_t g =RNG_GetRandomNumber(0, 255);
-				uint8_t b =RNG_GetRandomNumber(0, 255);
-				WS2812_Set_R_G_B_Color(i, r, g, b);
-			}
-			WS2812_Refresh();
+			if(key_num == 10) key_num = 0;
+			else key_num++;
 		}
 		
-		if(key == key0_down)
-		{
-			for(int i=0; i<WS2812_NUM; i++)
-			{
-				WS2812_Set_R_G_B_Color(i, 0, 0, 0);
-			}
-			WS2812_Refresh();
-		}
+		WS2812_Set_RGB_Color(0, color[key_num]);
+		WS2812_Set_RGB_Color(1, color[key_num]);
+		WS2812_Set_RGB_Color(2, color[key_num]);
+		WS2812_Set_RGB_Color(3, color[key_num]);
+		WS2812_Set_RGB_Color(4, color[key_num]);
+		WS2812_Set_RGB_Color(5, color[key_num]);
+		WS2812_Set_RGB_Color(6, color[key_num]);
+		WS2812_Set_RGB_Color(7, color[key_num]);
+		
+		uint16_t rgb565 =  rgb888_to_rgb565(color[key_num]);
+		lcd_clear(rgb565);
+
+		WS2812_Refresh();
+		
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

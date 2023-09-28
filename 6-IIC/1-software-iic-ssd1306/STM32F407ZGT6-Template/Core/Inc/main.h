@@ -77,12 +77,12 @@ void Error_Handler(void);
 #define LED_G_GPIO_Port GPIOF
 #define KEY_UP_Pin GPIO_PIN_0
 #define KEY_UP_GPIO_Port GPIOA
+#define IIC_SDA_Pin GPIO_PIN_1
+#define IIC_SDA_GPIO_Port GPIOA
+#define IIC_SCL_Pin GPIO_PIN_3
+#define IIC_SCL_GPIO_Port GPIOA
 #define LCD_BL_Pin GPIO_PIN_15
 #define LCD_BL_GPIO_Port GPIOB
-#define IIC_SDA_Pin GPIO_PIN_4
-#define IIC_SDA_GPIO_Port GPIOB
-#define IIC_SCL_Pin GPIO_PIN_5
-#define IIC_SCL_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

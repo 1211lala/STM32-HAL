@@ -98,6 +98,7 @@ int main(void)
 	
 	HAL_TIM_Base_Start_IT(&htim7);
 	HAL_UARTEx_ReceiveToIdle_IT(&huart1, idle_rec_buf, 100);	/* 每次使用发生中断后不会自动恢复,要再次使用这个函数 */
+	
 	OLED_Init();
 	
   /* USER CODE END 2 */
@@ -110,21 +111,21 @@ int main(void)
 		if(key == key_up_down)
 		{
 			OLED_Clear(0);
+			HAL_GPIO_TogglePin(LED_G_GPIO_Port, LED_G_Pin);
 		}
 		if(key == key0_down)
 		{
-			OLED_Clear(0);
+			for(uint8_t i=0; i<128; i++)
+			{
+				for(uint8_t j=0; j<31; j++)
+				{
+					OLED_DrawPoint(i, j, 1);
+				}
+				OLED_Refresh();
+				HAL_Delay(128-i);
+			}
 		}
 		
-		for(uint8_t i=0; i<128; i++)
-		{
-			for(uint8_t j=0; j<31; j++)
-			{
-				OLED_DrawPoint(i, j, 1);
-			}
-			OLED_Refresh();
-			HAL_Delay(128-i);
-		}
 		
     /* USER CODE END WHILE */
 
@@ -186,7 +187,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	/* 定时一秒 */
 	if(htim == &htim7)
 	{
-		HAL_GPIO_TogglePin(LED_G_GPIO_Port, LED_G_Pin);
+		
 	}
 }
 

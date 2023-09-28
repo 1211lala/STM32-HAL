@@ -94,13 +94,44 @@ void WS2812_Refresh(void)
 
  
 
+/**
+ * @brief   将RGB888转换成RGB565
+ * @param   rgb888 要转换的颜色值
+ * @retval  无
+ */
+uint16_t rgb888_to_rgb565(uint32_t rgb888)
+{
+    uint16_t rgb565;
+    uint8_t r = rgb888 >> 16;
+    uint8_t g = rgb888 >> 8;
+    uint8_t b = rgb888 >> 0;
+
+    rgb565 = rgb565 | (r >> 3) << 11;
+    rgb565 = rgb565 | ((g >> 2) << 5);
+    rgb565 = rgb565 | (b >> 3);
+
+    return rgb565;
+}
 
 
+/**
+* @brief   将RGB565转换成RGB888
+* @param   rgb565 要转换的颜色值
+* @retval  无
+*/
+uint32_t rgb565_to_rgb888(uint16_t rgb565)
+{
+    uint32_t rgb888;
+    uint8_t r = (rgb565 >> 11) << 3;
+    uint8_t g = (rgb565 >> 5) << 2;
+    uint8_t b = (rgb565 >> 0) << 3;
 
+    rgb888 = rgb888 | r << 16;
+    rgb888 = rgb888 | g << 8;
+    rgb888 = rgb888 | b << 0;
 
-
- 
-
+    return rgb888;
+}
 
 
 

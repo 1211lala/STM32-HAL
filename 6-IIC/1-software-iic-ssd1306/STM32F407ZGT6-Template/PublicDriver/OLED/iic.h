@@ -6,11 +6,11 @@
 #include "gpio.h"
 /******************************************************************************************/
 /* 引脚 定义 */
-#define IIC_SCL_PORT               			GPIOB
-#define IIC_SCL_PIN                			GPIO_PIN_5
+#define IIC_SCL_PORT               			GPIOA
+#define IIC_SCL_PIN                			GPIO_PIN_3
 
-#define IIC_SDA_PORT               			GPIOB
-#define IIC_SDA_PIN                			GPIO_PIN_6
+#define IIC_SDA_PORT               			GPIOA
+#define IIC_SDA_PIN                			GPIO_PIN_1
 
 /******************************************************************************************/
 /* IO操作 */
