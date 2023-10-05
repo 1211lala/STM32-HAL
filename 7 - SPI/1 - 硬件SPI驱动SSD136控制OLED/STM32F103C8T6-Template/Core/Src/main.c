@@ -111,15 +111,15 @@ int main(void)
   MX_TIM3_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
-	printf("硬件SPI驱动SSD1306  130FPS左右 \r\n");
-	printf("SPI的模式设置 8分屏(9Mbps/s)、空闲时时钟线为高、第二个边沿采集数据、\r\n");
-	printf("屏幕质量不好，有时不良要手动的把RES的线拔去，重新接到3.3V\r\n");
-	printf("D0 ---> SCK \r\n");
-	printf("D1 ---> MOSI \r\n");
-	printf("DC ---> 数据/命令 高电平为数据/低电平为低\r\n");
-	printf("RES ---> 复位接高电平 \r\n");
-	
-  OLED_Init();
+//	printf("硬件SPI驱动SSD1306  130FPS左右 \r\n");
+//	printf("SPI的模式设置 8分屏(9Mbps/s)、空闲时时钟线为高、第二个边沿采集数据、\r\n");
+//	printf("屏幕质量不好，有时不良要手动的把RES的线拔去，重新接到3.3V\r\n");
+//	printf("D0 ---> SCK \r\n");
+//	printf("D1 ---> MOSI \r\n");
+//	printf("DC ---> 数据/命令 高电平为数据/低电平为低\r\n");
+//	printf("RES ---> 复位接高电平 \r\n");
+//	
+//  OLED_Init();
 	HAL_TIM_Base_Start_IT(&htim3);
   /* USER CODE END 2 */
 
@@ -129,15 +129,17 @@ int main(void)
   while (1)
   {	
 
-		for(uint8_t i=0; i<129; i+=1)
-		{
-			for(uint8_t j=0; j<65; j++)
-			{
-				OLED_Clear(0);
-				OLED_ShowPicture(i, j, 127, 63, BMP8, 1);
-				OLED_Refresh();
-			}
-		}
+//		for(uint8_t i=0; i<129; i+=1)
+//		{
+//			for(uint8_t j=0; j<65; j++)
+//			{
+//				OLED_Clear(0);
+//				OLED_ShowPicture(i, j, 127, 63, BMP8, 1);
+//				OLED_Refresh();
+//			}
+//		}
+		
+		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 		HAL_Delay(1000);
     /* USER CODE END WHILE */
 
@@ -195,11 +197,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 		static uint32_t count = 0;
 		count++;
+		printf("count %d \r\n", count);
 		if(count >= 1000)
 		{
 			flag = 1;
 			count = 0;
-			HAL_TIM_Base_Stop_IT(&htim3);
+//			HAL_TIM_Base_Stop_IT(&htim3);
 		}
 	}
 }

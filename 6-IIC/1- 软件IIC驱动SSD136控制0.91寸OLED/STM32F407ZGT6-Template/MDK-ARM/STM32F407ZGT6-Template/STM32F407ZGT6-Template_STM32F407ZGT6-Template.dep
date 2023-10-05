@@ -46,7 +46,7 @@ I (../Core/Inc/fsmc.h)(0x65142A7F)
 I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x65142A7F)
 I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x65142A7F)
 I (../PublicDriver/.\MALLOC\malloc.h)(0x65142A7F)
-I (../PublicDriver/.\OLED\oled.h)(0x65156277)
+I (../PublicDriver/.\OLED\oled.h)(0x651A86F4)
 I (../PublicDriver/.\OLED\iic.h)(0x65142ED7)
 F (../Core/Src/gpio.c)(0x65142E42)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\gpio.o --omf_browse stm32f407zgt6-template\gpio.crf --depend stm32f407zgt6-template\gpio.d)
 I (../Core/Inc/gpio.h)(0x65142A7F)
@@ -94,7 +94,7 @@ I (../Core/Inc/fsmc.h)(0x65142A7F)
 I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x65142A7F)
 I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x65142A7F)
 I (../PublicDriver/.\MALLOC\malloc.h)(0x65142A7F)
-I (../PublicDriver/.\OLED\oled.h)(0x65156277)
+I (../PublicDriver/.\OLED\oled.h)(0x651A86F4)
 I (../PublicDriver/.\OLED\iic.h)(0x65142ED7)
 F (../Core/Src/fsmc.c)(0x65142A7F)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\fsmc.o --omf_browse stm32f407zgt6-template\fsmc.crf --depend stm32f407zgt6-template\fsmc.d)
 I (../Core/Inc/fsmc.h)(0x65142A7F)
@@ -142,7 +142,7 @@ I (../Core/Inc/gpio.h)(0x65142A7F)
 I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x65142A7F)
 I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x65142A7F)
 I (../PublicDriver/.\MALLOC\malloc.h)(0x65142A7F)
-I (../PublicDriver/.\OLED\oled.h)(0x65156277)
+I (../PublicDriver/.\OLED\oled.h)(0x651A86F4)
 I (../PublicDriver/.\OLED\iic.h)(0x65142ED7)
 F (../Core/Src/rng.c)(0x65142A7F)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\rng.o --omf_browse stm32f407zgt6-template\rng.crf --depend stm32f407zgt6-template\rng.d)
 I (../Core/Inc/rng.h)(0x65142A7F)
@@ -190,7 +190,7 @@ I (../Core/Inc/fsmc.h)(0x65142A7F)
 I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x65142A7F)
 I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x65142A7F)
 I (../PublicDriver/.\MALLOC\malloc.h)(0x65142A7F)
-I (../PublicDriver/.\OLED\oled.h)(0x65156277)
+I (../PublicDriver/.\OLED\oled.h)(0x651A86F4)
 I (../PublicDriver/.\OLED\iic.h)(0x65142ED7)
 F (../Core/Src/tim.c)(0x65142A7F)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\tim.o --omf_browse stm32f407zgt6-template\tim.crf --depend stm32f407zgt6-template\tim.d)
 I (../Core/Inc/tim.h)(0x65142A7F)
@@ -238,7 +238,7 @@ I (../Core/Inc/fsmc.h)(0x65142A7F)
 I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x65142A7F)
 I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x65142A7F)
 I (../PublicDriver/.\MALLOC\malloc.h)(0x65142A7F)
-I (../PublicDriver/.\OLED\oled.h)(0x65156277)
+I (../PublicDriver/.\OLED\oled.h)(0x651A86F4)
 I (../PublicDriver/.\OLED\iic.h)(0x65142ED7)
 F (../Core/Src/usart.c)(0x65142A7F)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\usart.o --omf_browse stm32f407zgt6-template\usart.crf --depend stm32f407zgt6-template\usart.d)
 I (../Core/Inc/usart.h)(0x65142A7F)
@@ -285,7 +285,7 @@ I (D:\SoftWare\Keil_MDK\ARM\ARMCC\include\string.h)(0x599ECD2C)
 I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x65142A7F)
 I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x65142A7F)
 I (../PublicDriver/.\MALLOC\malloc.h)(0x65142A7F)
-I (../PublicDriver/.\OLED\oled.h)(0x65156277)
+I (../PublicDriver/.\OLED\oled.h)(0x651A86F4)
 I (../PublicDriver/.\OLED\iic.h)(0x65142ED7)
 I (D:\SoftWare\Keil_MDK\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
 F (../Core/Src/stm32f4xx_it.c)(0x65142A7F)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\stm32f4xx_it.o --omf_browse stm32f407zgt6-template\stm32f4xx_it.crf --depend stm32f407zgt6-template\stm32f4xx_it.d)
@@ -334,7 +334,7 @@ I (../Core/Inc/fsmc.h)(0x65142A7F)
 I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x65142A7F)
 I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x65142A7F)
 I (../PublicDriver/.\MALLOC\malloc.h)(0x65142A7F)
-I (../PublicDriver/.\OLED\oled.h)(0x65156277)
+I (../PublicDriver/.\OLED\oled.h)(0x651A86F4)
 I (../PublicDriver/.\OLED\iic.h)(0x65142ED7)
 I (../Core/Inc/stm32f4xx_it.h)(0x65142A7F)
 F (../Core/Src/stm32f4xx_hal_msp.c)(0x65142A7F)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\stm32f4xx_hal_msp.o --omf_browse stm32f407zgt6-template\stm32f4xx_hal_msp.crf --depend stm32f407zgt6-template\stm32f4xx_hal_msp.d)
@@ -383,7 +383,7 @@ I (../Core/Inc/fsmc.h)(0x65142A7F)
 I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x65142A7F)
 I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x65142A7F)
 I (../PublicDriver/.\MALLOC\malloc.h)(0x65142A7F)
-I (../PublicDriver/.\OLED\oled.h)(0x65156277)
+I (../PublicDriver/.\OLED\oled.h)(0x651A86F4)
 I (../PublicDriver/.\OLED\iic.h)(0x65142ED7)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fsmc.c)(0x64F73842)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\stm32f4xx_ll_fsmc.o --omf_browse stm32f407zgt6-template\stm32f4xx_ll_fsmc.crf --depend stm32f407zgt6-template\stm32f4xx_ll_fsmc.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x64F73842)
@@ -1111,7 +1111,7 @@ I (../Core/Inc/gpio.h)(0x65142A7F)
 I (../Core/Inc/fsmc.h)(0x65142A7F)
 I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x65142A7F)
 I (../PublicDriver/.\MALLOC\malloc.h)(0x65142A7F)
-I (../PublicDriver/.\OLED\oled.h)(0x65156277)
+I (../PublicDriver/.\OLED\oled.h)(0x651A86F4)
 I (../PublicDriver/.\OLED\iic.h)(0x65142ED7)
 I (..\PublicDriver\TFTLCD\lcdfont.h)(0x65142A7F)
 I (..\PublicDriver\TFTLCD\lcd_ex.c)(0x65142A7F)
@@ -1162,7 +1162,7 @@ I (../Core/Inc/fsmc.h)(0x65142A7F)
 I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x65142A7F)
 I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x65142A7F)
 I (../PublicDriver/.\MALLOC\malloc.h)(0x65142A7F)
-I (../PublicDriver/.\OLED\oled.h)(0x65156277)
+I (../PublicDriver/.\OLED\oled.h)(0x651A86F4)
 I (../PublicDriver/.\OLED\iic.h)(0x65142ED7)
 F (..\PublicDriver\PRIVATE_CFG\private_cfg.c)(0x65142A7F)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\private_cfg.o --omf_browse stm32f407zgt6-template\private_cfg.crf --depend stm32f407zgt6-template\private_cfg.d)
 I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x65142A7F)
@@ -1210,9 +1210,9 @@ I (../Core/Inc/gpio.h)(0x65142A7F)
 I (../Core/Inc/fsmc.h)(0x65142A7F)
 I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x65142A7F)
 I (../PublicDriver/.\MALLOC\malloc.h)(0x65142A7F)
-I (../PublicDriver/.\OLED\oled.h)(0x65156277)
+I (../PublicDriver/.\OLED\oled.h)(0x651A86F4)
 I (../PublicDriver/.\OLED\iic.h)(0x65142ED7)
-F (..\PublicDriver\OLED\iic.c)(0x65142CC9)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\iic.o --omf_browse stm32f407zgt6-template\iic.crf --depend stm32f407zgt6-template\iic.d)
+F (..\PublicDriver\OLED\iic.c)(0x651A864F)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\iic.o --omf_browse stm32f407zgt6-template\iic.crf --depend stm32f407zgt6-template\iic.d)
 I (../PublicDriver/./OLED/iic.h)(0x65142ED7)
 I (../Core/Inc/main.h)(0x65142E45)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x64F73842)
@@ -1259,10 +1259,10 @@ I (../Core/Inc/fsmc.h)(0x65142A7F)
 I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x65142A7F)
 I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x65142A7F)
 I (../PublicDriver/.\MALLOC\malloc.h)(0x65142A7F)
-I (../PublicDriver/.\OLED\oled.h)(0x65156277)
+I (../PublicDriver/.\OLED\oled.h)(0x651A86F4)
 I (../PublicDriver/.\OLED\iic.h)(0x65142ED7)
-F (..\PublicDriver\OLED\oled.c)(0x651562E9)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\oled.o --omf_browse stm32f407zgt6-template\oled.crf --depend stm32f407zgt6-template\oled.d)
-I (..\PublicDriver\OLED\oled.h)(0x65156277)
+F (..\PublicDriver\OLED\oled.c)(0x651A87F3)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../PublicDriver-I.\RTE\_STM32F407ZGT6-Template-ID:\SoftWare\Keil_MDK\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\SoftWare\Keil_MDK\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zgt6-template\oled.o --omf_browse stm32f407zgt6-template\oled.crf --depend stm32f407zgt6-template\oled.d)
+I (../PublicDriver/./OLED/oled.h)(0x651A86F4)
 I (../Core/Inc/main.h)(0x65142E45)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x64F73842)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x65142A7F)
@@ -1308,6 +1308,7 @@ I (../Core/Inc/fsmc.h)(0x65142A7F)
 I (../PublicDriver/.\PRIVATE_CFG\private_cfg.h)(0x65142A7F)
 I (../PublicDriver/.\TFTLCD\tftlcd.h)(0x65142A7F)
 I (../PublicDriver/.\MALLOC\malloc.h)(0x65142A7F)
-I (../PublicDriver/.\OLED\oled.h)(0x65156277)
+I (../PublicDriver/.\OLED\oled.h)(0x651A86F4)
 I (../PublicDriver/.\OLED\iic.h)(0x65142ED7)
+I (../PublicDriver/./OLED/oled_font.h)(0x65181D9F)
 F (..\README\readme.txt)(0x65142A7F)()

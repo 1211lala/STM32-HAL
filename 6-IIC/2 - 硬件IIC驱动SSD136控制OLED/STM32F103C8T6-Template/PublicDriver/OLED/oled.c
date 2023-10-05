@@ -63,6 +63,7 @@ void OLED_Init(void)
 	OLED_Write_Byte(0x8d,OLED_CMD);//--set DC-DC enable
 	OLED_Write_Byte(0x14,OLED_CMD);//
 	OLED_Clear(0);
+	OLED_Refresh();
 	OLED_Write_Byte(0xaf,OLED_CMD);//--turn on oled panel 
 	#endif
 	

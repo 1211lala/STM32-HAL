@@ -21,5 +21,8 @@ void OLED_DrawPoint(uint8_t x,uint8_t y,uint8_t t);
 void OLED_Init(void);
 void OLED_Show_Char(uint8_t x, uint8_t y, uint8_t chr, uint8_t char_size, uint8_t mode);
 void OLED_Show_String(uint8_t x, uint8_t y, uint8_t *str, uint8_t size, uint8_t mode);
+void OLED_Draw_Line(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);
+void OLED_ShowPicture(uint8_t x,uint8_t y,uint8_t bmp_x,uint8_t bmp_y,uint8_t BMP[],uint8_t mode);
+
 
 #endif

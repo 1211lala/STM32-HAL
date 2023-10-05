@@ -3,17 +3,16 @@
         {
             "name": "STM32F407ZGT6-Template",
             "includePath": [
-                "e:\\my_study\\CubeMX-NWE-9.22\\GPIO\\STM32F407ZGT6-Template\\Core\\Inc",
-                "e:\\my_study\\CubeMX-NWE-9.22\\GPIO\\STM32F407ZGT6-Template\\Drivers\\STM32F4xx_HAL_Driver\\Inc",
-                "e:\\my_study\\CubeMX-NWE-9.22\\GPIO\\STM32F407ZGT6-Template\\Drivers\\STM32F4xx_HAL_Driver\\Inc\\Legacy",
-                "e:\\my_study\\CubeMX-NWE-9.22\\GPIO\\STM32F407ZGT6-Template\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
-                "e:\\my_study\\CubeMX-NWE-9.22\\GPIO\\STM32F407ZGT6-Template\\Drivers\\CMSIS\\Include",
-                "e:\\my_study\\CubeMX-NWE-9.22\\GPIO\\STM32F407ZGT6-Template\\PublicDriver",
-                "D:\\SoftWare\\MDK\\ARM\\ARMCC\\include",
-                "e:\\my_study\\CubeMX-NWE-9.22\\GPIO\\STM32F407ZGT6-Template\\MDK-ARM",
-                "e:\\my_study\\CubeMX-NWE-9.22\\GPIO\\STM32F407ZGT6-Template\\Core\\Src",
-                "e:\\my_study\\CubeMX-NWE-9.22\\GPIO\\STM32F407ZGT6-Template\\Drivers\\STM32F4xx_HAL_Driver\\Src",
-                "e:\\my_study\\CubeMX-NWE-9.22\\GPIO\\STM32F407ZGT6-Template\\PublicDriver\\PRIVATE_CFG"
+                "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\1-GPIO\\1 - GPIO为输入和输出模式\\STM32F407ZGT6-Template\\Core\\Inc",
+                "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\1-GPIO\\1 - GPIO为输入和输出模式\\STM32F407ZGT6-Template\\Drivers\\STM32F4xx_HAL_Driver\\Inc",
+                "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\1-GPIO\\1 - GPIO为输入和输出模式\\STM32F407ZGT6-Template\\Drivers\\STM32F4xx_HAL_Driver\\Inc\\Legacy",
+                "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\1-GPIO\\1 - GPIO为输入和输出模式\\STM32F407ZGT6-Template\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
+                "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\1-GPIO\\1 - GPIO为输入和输出模式\\STM32F407ZGT6-Template\\Drivers\\CMSIS\\Include",
+                "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\1-GPIO\\1 - GPIO为输入和输出模式\\STM32F407ZGT6-Template\\PublicDriver",
+                "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\1-GPIO\\1 - GPIO为输入和输出模式\\STM32F407ZGT6-Template\\MDK-ARM",
+                "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\1-GPIO\\1 - GPIO为输入和输出模式\\STM32F407ZGT6-Template\\Core\\Src",
+                "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\1-GPIO\\1 - GPIO为输入和输出模式\\STM32F407ZGT6-Template\\Drivers\\STM32F4xx_HAL_Driver\\Src",
+                "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\1-GPIO\\1 - GPIO为输入和输出模式\\STM32F407ZGT6-Template\\PublicDriver\\PRIVATE_CFG"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

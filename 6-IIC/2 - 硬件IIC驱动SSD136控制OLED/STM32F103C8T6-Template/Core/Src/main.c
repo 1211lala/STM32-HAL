@@ -106,8 +106,6 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_USART1_UART_Init();
-  MX_USART2_UART_Init();
-  MX_USART3_Init();
   MX_TIM2_Init();
   MX_I2C1_Init();
   MX_TIM3_Init();
@@ -119,9 +117,8 @@ int main(void)
 	printf("硬件的IIC的中断和DMA我也使用了一下，小数据可以用大数据不行r\n");
 	
   OLED_Init();
-	OLED_Clear(0);
-	uint8_t oled_buf[30];
-	uint32_t count =0 ;
+	OLED_Clear(1);
+	OLED_Refresh();
 	HAL_TIM_Base_Start_IT(&htim3);
   /* USER CODE END 2 */
 
@@ -130,8 +127,8 @@ int main(void)
 
   while (1)
   {	
-
-	
+			OLED_ShowPicture(0, 0, 127, 63, BMP8, 1);
+			OLED_Refresh();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

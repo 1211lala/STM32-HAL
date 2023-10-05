@@ -23,7 +23,6 @@
 "e_board-c8t6\stm32f1xx_hal_tim.o"
 "e_board-c8t6\stm32f1xx_hal_tim_ex.o"
 "e_board-c8t6\stm32f1xx_hal_uart.o"
-"e_board-c8t6\stm32f1xx_hal_usart.o"
 "e_board-c8t6\system_stm32f1xx.o"
 "e_board-c8t6\oled.o"
 --strict --scatter "E_Board-C8T6\E_Board-C8T6.sct"
