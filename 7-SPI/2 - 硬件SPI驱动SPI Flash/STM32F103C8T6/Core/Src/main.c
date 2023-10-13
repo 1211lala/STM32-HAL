@@ -97,14 +97,31 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	
 	W25QXX_Init();
+	uint32_t size = 1000;
+	uint8_t write_buf[1000];
+	uint8_t read_buf[1000];		/* 设置栈大小2K不然会溢出*/
+	
+	for(uint16_t i=0; i<size; i++)
+	{
+		printf("write_buf[%d] = %d\r\n",i,i%256);
+		write_buf[i] = i;
+	}
+	W25QXX_Write(write_buf, 0x000100, size);
+	
+	HAL_Delay(10);
+	
+	W25QXX_Read(read_buf, 0x000100, 1000);
+	for(uint16_t i=0; i<1000; i++)
+	{
+		printf("read_buf[%d] = %d \r\n",i,read_buf[i]);
+	}
 	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
-  {	
-
+  {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

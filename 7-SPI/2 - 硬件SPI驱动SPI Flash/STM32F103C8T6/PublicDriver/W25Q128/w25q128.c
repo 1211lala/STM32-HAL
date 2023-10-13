@@ -34,7 +34,7 @@ uint16_t W25QXX_ReadID(void)
 	Temp|=SPI1_ReadWriteByte(0xFF)<<8;  
 	Temp|=SPI1_ReadWriteByte(0xFF);	 
 	W25QXX_CS_HIGH;			/* Æ¬Ñ¡À­¸ß */	  
-	#if 0
+	#if 1
 	printf("W25Q128 ID = 0X%X\r\n",Temp);
 	#endif
 	return Temp;
