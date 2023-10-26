@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "fatfs.h"
+#include "i2c.h"
 #include "rng.h"
 #include "sdio.h"
 #include "spi.h"
@@ -101,63 +102,23 @@ int main(void)
   MX_SPI1_Init();
   MX_SDIO_SD_Init();
   MX_FATFS_Init();
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-	
-	FRESULT file;
-	file = f_open(&SDFile, "test.txt", FA_READ);
-	if(file == FR_OK)
-	{
-		char buf[64];
-		uint32_t read_num = 0;
-		if( f_read(&SDFile, buf, 63, &read_num) == FR_OK )
-		{
-			buf[read_num] = '\0';
-			printf("%s\n", buf);
-			
-			/* 打印读出的数据 */
-			for(uint8_t i=0; i<read_num; i++)
-			{
-				printf(" 第%d字符  %c  0x%02x \r\n", i, buf[i], buf[i]);
-			}
-		}
-	}else
-	{
-		printf("test.txt read fail.  error code %d\r\n", file);
-	}
-	f_close(&SDFile);
-	
-	
-	
-	/* 创造文件 */
-	file = f_open(&SDFile, "stm32.txt", FA_WRITE);
-	{
-		if(file != FR_OK) 
-		{
-			file = f_open(&SDFile, "stm32.txt", FA_WRITE|FA_READ|FA_CREATE_NEW);
-			if(file == FR_OK)
-			{
-				printf("create stm32.txt ok!\r\n");
-				uint32_t bw;
-				f_write(&SDFile,"stm32创建文件", sizeof ("stm32创建文件"), &bw);
-				if(bw == sizeof ("stm32创建文件"))
-				{
-					printf("数据写入完整!\r\n");
-				}
-			}else
-			{
-				printf("create stm32.txt fail. error code %d!\r\n", file);
-			}
-		}
-	}
-	f_close(&SDFile);
-	
-		
-		
 	my_mem_init(SRAMEX);	
 	log_buf = mymalloc(SRAMEX, 100);
 	uart1_rec_buf = mymalloc(SRAMEX, 500);
+	
+	if(f_mount(&SDFatFS, SDPath, 1) == FR_OK)
+	{
+		printf("SD mount ok\r\n");
+	}else
+	{
+		printf("SD mount error\r\n");
+	}
 	W25QXX_Init();
-	lcd_init(0, WHITE);
+	OLED_Init();
+	OLED_Clear(0);
+	OLED_Refresh();
 	
 	HAL_UARTEx_ReceiveToIdle_IT(&huart1, uart1_rec_buf, 500);	
 	HAL_TIM_Base_Start_IT(&htim7);
@@ -177,9 +138,20 @@ int main(void)
 		}
 		if(key == key0_down)
 		{
+
 		}
 		
+		static uint32_t num[2] = {0xa1, 0xa2};
+		
+	
+			if(num[0] > 0xaf)
+			{
+				num[0] = 0xa2;
+			}
+			num[0] += 1;
 
+		Font_read_text(42, 20, (uint8_t*)num);
+//		HAL_Delay(50);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

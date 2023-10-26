@@ -35,11 +35,13 @@ extern "C" {
 #include "stdio.h"
 #include "string.h"
 
+#include "i2c.h"
 #include "./PRIVATE_CFG/private_cfg.h"
 #include "./TFTLCD/tftlcd.h"
 #include "./MALLOC/malloc.h"
 #include "./W25Q128/w25q128.h"
 #include "./SDIO_CARD/sdio_card.h"
+#include "./OLED/oled.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

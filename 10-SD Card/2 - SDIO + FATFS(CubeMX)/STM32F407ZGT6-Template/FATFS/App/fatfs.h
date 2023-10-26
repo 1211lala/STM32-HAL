@@ -39,6 +39,7 @@ extern FIL SDFile; /* File object for SD */
 void MX_FATFS_Init(void);
 
 /* USER CODE BEGIN Prototypes */
+void Font_read_text(uint8_t x, uint8_t y, uint8_t* gbk);
 
 /* USER CODE END Prototypes */
 #ifdef __cplusplus
