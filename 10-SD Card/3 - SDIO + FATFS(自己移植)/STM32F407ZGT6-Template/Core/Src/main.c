@@ -52,6 +52,7 @@
 /* USER CODE BEGIN PV */
 uint8_t *log_buf = NULL;
 uint8_t *uart1_rec_buf = NULL;
+uint8_t shift = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -109,7 +110,7 @@ int main(void)
 	fs_exfuns_mem_init();
 	
 	OLED_Init();
-	OLED_Clear(1);
+	OLED_Clear(0);
 	OLED_Refresh();
 	HAL_UARTEx_ReceiveToIdle_IT(&huart1, uart1_rec_buf, 500);
   HAL_TIM_Base_Start_IT(&htim7);
@@ -133,15 +134,34 @@ int main(void)
 	}
 	if (key == key0_down)
 	{
-
-	}
-	for(uint8_t i=0; i<64; i+=3)
-	{
-		OLED_Clear(0);
-		OLED_Show_Text(0, i, 16, (uint8_t*)"安徽省淮南市");
-		OLED_Show_Text(0, i+30, 24, (uint8_t*)"安徽省淮南市");
+		static uint8_t data = 0;
+		uint8_t buf[30];
+		sprintf((char*)buf,"次数 : %d", data += 1);
+		FS_Show_Text(0, 0, 16, buf, 1);
+		FS_Show_Text(0, 16, 16, buf, 0);
+		FS_Show_Text(0, 32, 16, buf, 1);
+		FS_Show_Text(0, 48, 16, buf, 0);
 		OLED_Refresh();
 	}
+
+	
+	if(shift == 1)
+	{
+		shift = 0;
+		for(uint8_t i=0; i<128; i++)
+		{
+			FS_Show_Picture(i,0,128,64,uart1_rec_buf, 1024, 0);
+			OLED_Refresh();
+		}
+		HAL_Delay(100);
+		for(uint8_t i=0; i<128; i++)
+		{
+			FS_Show_Picture(128-i,0,128,64,uart1_rec_buf, 1024, 0);
+			OLED_Refresh();
+		}
+	}
+	
+
 	HAL_GPIO_TogglePin(LED_R_GPIO_Port, LED_R_Pin);
     /* USER CODE END WHILE */
 
@@ -212,7 +232,8 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
   if (huart == &huart1)
   {
     uart1_rec_buf[Size] = '\0';
-
+		
+		shift = 1;
     HAL_UART_Transmit(&huart1, uart1_rec_buf, Size, 0xff);
 
     HAL_UARTEx_ReceiveToIdle_IT(&huart1, uart1_rec_buf, 500);
