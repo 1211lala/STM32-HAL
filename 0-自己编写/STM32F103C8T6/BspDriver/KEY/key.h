@@ -15,8 +15,8 @@
 #define key_s4_GPIO_Port GPIOB
 
 
-#define UNDO_STATUS 	0		/* 按下时的电平 */
-#define DOWN_STATUS 1			/* 松开时的电平 */
+#define UNDO_STATUS 	0		/* 松开时的电平 */
+#define DOWN_STATUS 1			/* 按下时的电平 */
 
 enum key_status
 {

@@ -107,20 +107,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
-		if(__HAL_TIM_GET_FLAG(&mytim1, TIM_FLAG_CC1) == SET)
-		{
-			sprintf((char*)usb_buf, "cc1\r\n");
-			usb_transmit(usb_buf, strlen((char*)usb_buf));
-			__HAL_TIM_CLEAR_FLAG(&mytim1, TIM_FLAG_CC1);
-		}
-		
-		
-		
 		uint8_t key = Get_key_with_undo(30);
 		if(key != key_null)
 		{
-			
+			switch(key)
+			{
+				case(s1_down): __HAL_TIM_ENABLE_IT(&mytim1, TIM_IT_CC1); break;
+				case(s2_down): __HAL_TIM_DISABLE_IT(&mytim1, TIM_IT_CC1);break;
+				case(s3_down): HAL_TIM_PWM_Start_DMA(&mytim1, TIM_CHANNEL_2, (uint32_t*)tim1_dma_ch2_buf, 5);	break;
+				case(s4_down): break;
+			}
 		}
 		
     /* USER CODE END WHILE */
@@ -177,6 +173,7 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+/* 定时器更新中断 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim->Instance == TIM1)
@@ -185,7 +182,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	}
 	else if(htim->Instance == TIM2)
 	{
-		usb_transmit((uint8_t*)"TIM2 UPDATE \r\n", strlen((char*)"TIM2 UPDATE \r\n"));
+		usb_transmit((uint8_t*)"TIM2 UPDATE INTERRUPT\r\n", strlen((char*)"TIM2 UPDATE INTERRUPT\r\n"));
 	}
 }
 
@@ -194,9 +191,29 @@ void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim->Instance == TIM2)
 	{		
-		uint8_t buf[40];
-		sprintf((char*)buf, "TIM2 CNT %d \r\n", TIM2->CNT);
-		usb_transmit((uint8_t*)buf, strlen((char*)buf));
+		sprintf((char*)usb_buf, "TIM2 TRIG INTERRUPT%d \r\n", TIM2->CNT);
+		usb_transmit((uint8_t*)usb_buf, strlen((char*)usb_buf));
+	}
+}
+
+/* 定时器PWM中断 */
+void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
+{
+	if(htim->Instance == TIM1)
+	{																			
+		switch(htim->Channel)
+		{
+			case(HAL_TIM_ACTIVE_CHANNEL_1):
+																			sprintf((char*)usb_buf, "TIM1 PWM CH1 INTERRUPT\r\n");
+																			usb_transmit((uint8_t*)usb_buf, strlen((char*)usb_buf));
+																			break;
+			case(HAL_TIM_ACTIVE_CHANNEL_2): 
+																			sprintf((char*)usb_buf, "TIM1 PWM CH2 DMA\r\n");
+																			usb_transmit((uint8_t*)usb_buf, strlen((char*)usb_buf));
+																			break;
+			case(HAL_TIM_ACTIVE_CHANNEL_3): break;
+			case(HAL_TIM_ACTIVE_CHANNEL_4): break;
+		}
 	}
 }
 /* USER CODE END 4 */

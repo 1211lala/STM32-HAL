@@ -233,4 +233,10 @@ void TIM2_IRQHandler(void)
 {
 	HAL_TIM_IRQHandler(&mytim2);
 }
+
+
+void DMA1_Channel2_IRQHandler(void)
+{
+	HAL_DMA_IRQHandler(&tim1_dma);
+}
 /* USER CODE END 1 */

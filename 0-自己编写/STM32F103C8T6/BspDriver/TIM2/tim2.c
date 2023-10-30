@@ -32,7 +32,7 @@ void MY_TIM2_CountMode_Config(uint16_t psc, uint16_t period)
 	/* 设置输入分频 只对ETR通道有用 */
 	tim2_clock.ClockPrescaler = TIM_CLOCKPRESCALER_DIV1;
 	/* 设置信号来源 */
-	tim2_clock.ClockSource = TIM_TS_TI1FP1;		/* 时钟来源为通道一的边缘检测模式 */
+	tim2_clock.ClockSource = TIM_TS_TI1FP1;		/* 时钟来源为通道一滤波模式 */
 	HAL_TIM_ConfigClockSource(&mytim2, &tim2_clock);
 	
 	
