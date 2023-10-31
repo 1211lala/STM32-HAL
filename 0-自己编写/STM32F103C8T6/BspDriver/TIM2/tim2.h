@@ -1,7 +1,6 @@
 #ifndef _TIM2_H_
 #define _TIM2_H_
 
-
 #include "main.h"
 
 extern TIM_HandleTypeDef mytim2;

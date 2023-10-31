@@ -3,134 +3,130 @@
 
 TIM_HandleTypeDef mytim1;
 DMA_HandleTypeDef tim1_dma;
-uint16_t tim1_dma_ch2_buf[5] = {1000, 2000, 3000, 4000, 5000} ;
+uint16_t tim1_dma_ch3_buf[5] = {399, 2000, 3000, 4000, 3500};
 
-void MY_TIM1_Base_Tim_Config(uint16_t psc, uint16_t period)
+TIM_OC_InitTypeDef tim1_chx;
+
+/*
+	CH1 PA8
+	CH2 PA9
+	CH2 PA10
+	CH2 PA11
+*/
+void MY_TIM1_Chx_Pwm_Config(uint16_t psc, uint16_t period, uint16_t pulse)
 {
+	/************************************************è®¾ç½®æ—¶åŸºå‚æ•°*******************************************/
 	mytim1.Instance = TIM1;
 	mytim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
 	mytim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
 	mytim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-	mytim1.Init.Period = period-1;
-	mytim1.Init.Prescaler = psc-1;
-	/* ÖØ¸´¼ÆÊı²»ÖªµÀ¸ÉÉ¶ÓÃ */
+	mytim1.Init.Period = period - 1;
+	mytim1.Init.Prescaler = psc - 1;
+	/* é‡å¤è®¡æ•°ä¸çŸ¥é“å¹²å•¥ç”¨ */
 	mytim1.Init.RepetitionCounter = 0;
-	HAL_TIM_Base_Init(&mytim1);
-	
-	/* Çå³ı¶¨Ê±Æ÷µÄÖĞ¶Ï±êÖ¾ */
-	__HAL_TIM_CLEAR_FLAG(&mytim1,TIM_FLAG_UPDATE);
-	/* ÒÔÖĞ¶Ï·½Ê½¿ªÆô¶¨Ê±Æ÷ */
-	HAL_TIM_Base_Start_IT(&mytim1);
-}
-
-
-
-
-TIM_OC_InitTypeDef tim1_chx;
-void MY_TIM1_Chx_Pwm_Config(uint16_t psc, uint16_t period, uint16_t pulse)
-{
-	MY_TIM1_Base_Tim_Config(psc, period);
+	/*è®¾ç½®æ—¶åŸºå‚æ•° ç›¸å½“äº HAL_TIM_Base_Init() */
 	HAL_TIM_PWM_Init(&mytim1);
-	/* Çå³ı¶¨Ê±Æ÷µÄÖĞ¶Ï±êÖ¾  TIM_Base_SetConfig()º¯Êı»áÉèÖÃ´¥·¢Ò»´Î¸üĞÂÖĞ¶Ï */
-	__HAL_TIM_CLEAR_FLAG(&mytim1,TIM_FLAG_UPDATE);
-	
-	tim1_chx.OCFastMode = TIM_OCFAST_DISABLE;			
-	tim1_chx.OCMode = TIM_OCMODE_PWM1;  					/* ÉèÖÃPWMÄ£Ê½ */
-	/* 
-		Ö»¿¼ÂÇÏòÉÏ¼ÆÊı
-		PWMMODE1	ÔÚCNT > CCR1Ê±ÎªÎŞĞ§µçÆ½£¬·´Ö®ÎªÓĞĞ§µçÆ½
-		PWMMODE2	ÔÚCNT > CCR1Ê±ÎªÓĞĞ§µçÆ½£¬·´Ö®ÎªÎŞĞ§µçÆ½
-	*/
-	tim1_chx.OCPolarity =	TIM_OCPOLARITY_HIGH;
-	tim1_chx.Pulse = pulse;							/* ÉèÖÃ±È½ÏÖµ */
-//	tim1_chx.OCIdleState =   	/* ¸ß¼¶¶¨Ê±Æ÷ÌØÓĞ ÅäÖÃ¿ÕÏĞ×´Ì¬ */
-//	tim1_chx.OCNIdleState =		/* ¸ß¼¶¶¨Ê±Æ÷ÌØÓĞ ÅäÖÃ»¥²¹Í¨µÀ¿ÕÏĞ×´Ì¬ */								
-//	tim1_chx.OCNPolarity =		/* ¸ß¼¶¶¨Ê±Æ÷ÌØÓĞ ÅäÖÃ»¥²¹Í¨µÀ¿ÕÏĞ¼«ĞÔ */
-	HAL_TIM_PWM_ConfigChannel(&mytim1, &tim1_chx, TIM_CHANNEL_1);
-	/* ¿ªÆôPWMÊä³ö ÖĞ¶ÏÄ£Ê½ */
-	HAL_TIM_PWM_Start_IT(&mytim1, TIM_CHANNEL_1);
-	
-	
-	HAL_TIM_PWM_ConfigChannel(&mytim1, &tim1_chx, TIM_CHANNEL_2);
-	tim1_dma.Instance = DMA1_Channel2;													/* Ê¹ÓÃ¹Ì¶¨µÄDMAÍ¨µÀ */
-	tim1_dma.Init.Direction = DMA_MEMORY_TO_PERIPH;							/* DMA·½Ïò */
-	tim1_dma.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;		/* DMA´«ÊäÄÚ´æÊı¾İ´óĞ¡ */
-	tim1_dma.Init.MemInc = DMA_MINC_ENABLE;											/* DMAÄÚ´æµØÖ·×Ô¼Ó */
-	tim1_dma.Init.Mode = DMA_NORMAL;														/* DMAµ¥´ÎÄ£Ê½ */
-	tim1_dma.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;/* DMA´«Êä¼Ä´æÆ÷Êı¾İ´óĞ¡ */
-	tim1_dma.Init.PeriphInc = DMA_PINC_DISABLE;									/* DMA¼Ä´æÆ÷µØÖ·²»×Ô¼Ó */
-	tim1_dma.Init.Priority = DMA_PRIORITY_LOW;									/* DMAÓÅÏÈ¼¶µÍ */
-	HAL_DMA_Init(&tim1_dma);																		/* ³õÊ¼»¯DMA²ÎÊı */
-	
-	__HAL_LINKDMA(&mytim1, hdma[TIM_DMA_ID_CC2], tim1_dma);			/* ½« DMA1_Channel2 Óë CCR2 ¼Ä´æÆ÷ÁªÏµÆğÀ´ */
-	
-	
-}
+	/* æ¸…é™¤å®šæ—¶å™¨çš„ä¸­æ–­æ ‡å¿—  TIM_Base_SetConfig()å‡½æ•°ä¼šè®¾ç½®è§¦å‘ä¸€æ¬¡æ›´æ–°ä¸­æ–­ */
+	__HAL_TIM_CLEAR_FLAG(&mytim1, TIM_FLAG_UPDATE);
+	/* å¼€å¯å®šæ—¶å™¨çš„æ›´æ–°ä¸­æ–­ */
+	__HAL_TIM_ENABLE_IT(&mytim1, TIM_FLAG_UPDATE);
 
+	/************************************************è®¾ç½®PWMå‚æ•°å¹¶è®¾ç½®é€šé“*******************************************/
+	tim1_chx.OCFastMode = TIM_OCFAST_DISABLE;
+	tim1_chx.OCMode = TIM_OCMODE_PWM1; /* è®¾ç½®PWMæ¨¡å¼ */
+	/*
+		åªè€ƒè™‘å‘ä¸Šè®¡æ•°
+		PWMMODE1	åœ¨CNT > CCR1æ—¶ä¸ºæ— æ•ˆç”µå¹³ï¼Œåä¹‹ä¸ºæœ‰æ•ˆç”µå¹³
+		PWMMODE2	åœ¨CNT > CCR1æ—¶ä¸ºæœ‰æ•ˆç”µå¹³ï¼Œåä¹‹ä¸ºæ— æ•ˆç”µå¹³
+	*/
+	tim1_chx.OCPolarity = TIM_OCPOLARITY_HIGH;
+	tim1_chx.Pulse = pulse; /* è®¾ç½®æ¯”è¾ƒå€¼ */
+//	tim1_chx.OCIdleState =   	/* é«˜çº§å®šæ—¶å™¨ç‰¹æœ‰ é…ç½®ç©ºé—²çŠ¶æ€ */
+//	tim1_chx.OCNIdleState =		/* é«˜çº§å®šæ—¶å™¨ç‰¹æœ‰ é…ç½®äº’è¡¥é€šé“ç©ºé—²çŠ¶æ€ */
+//	tim1_chx.OCNPolarity =		/* é«˜çº§å®šæ—¶å™¨ç‰¹æœ‰ é…ç½®äº’è¡¥é€šé“ç©ºé—²ææ€§ */
+	HAL_TIM_PWM_ConfigChannel(&mytim1, &tim1_chx, TIM_CHANNEL_1);
+	/* CH1å¼€å¯PWMè¾“å‡º */
+	HAL_TIM_PWM_Start(&mytim1, TIM_CHANNEL_1);
+
+	HAL_TIM_PWM_ConfigChannel(&mytim1, &tim1_chx, TIM_CHANNEL_2);
+	/* CH2å¼€å¯PWMè¾“å‡º ä¸­æ–­æ¨¡å¼ */
+	HAL_TIM_PWM_Start_IT(&mytim1, TIM_CHANNEL_2);
+
+	HAL_TIM_PWM_ConfigChannel(&mytim1, &tim1_chx, TIM_CHANNEL_3);
+		
+	/************************************************è®¾ç½®DMAå¹¶LINK*******************************************/
+	tim1_dma.Instance = DMA1_Channel6;												/* ä½¿ç”¨å›ºå®šçš„DMAé€šé“ */
+	tim1_dma.Init.Direction = DMA_MEMORY_TO_PERIPH;				 		/* DMAæ–¹å‘ */
+	tim1_dma.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;	/* DMAä¼ è¾“å†…å­˜æ•°æ®å¤§å° */
+	tim1_dma.Init.MemInc = DMA_MINC_ENABLE;						 		/* DMAå†…å­˜åœ°å€è‡ªåŠ  */
+	tim1_dma.Init.Mode = DMA_NORMAL;							 				/* DMAå•æ¬¡æ¨¡å¼ */
+	tim1_dma.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD; /* DMAä¼ è¾“å¯„å­˜å™¨æ•°æ®å¤§å° */
+	tim1_dma.Init.PeriphInc = DMA_PINC_DISABLE;					 /* DMAå¯„å­˜å™¨åœ°å€ä¸è‡ªåŠ  */
+	tim1_dma.Init.Priority = DMA_PRIORITY_LOW;					 /* DMAä¼˜å…ˆçº§ä½ */
+	HAL_DMA_Init(&tim1_dma);									 /* åˆå§‹åŒ–DMAå‚æ•° */
+
+	__HAL_LINKDMA(&mytim1, hdma[TIM_DMA_ID_CC3], tim1_dma); /* å°† DMA1_Channel2 ä¸ CCR1 å¯„å­˜å™¨è”ç³»èµ·æ¥ */
+	/* CH3å¼€å¯PWMè¾“å‡º DMAæ¨¡å¼ */
+	HAL_TIM_PWM_Start_DMA(&mytim1, TIM_CHANNEL_3, (uint32_t *)tim1_dma_ch3_buf, 5);
+}
 
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
 {
-	if(htim == &mytim1)	/* TIM1 ¸üĞÂÖĞ¶Ï*/
+	if (htim == &mytim1) /* TIM1 æ›´æ–°ä¸­æ–­*/
 	{
 		__HAL_RCC_TIM1_CLK_ENABLE();
-		
-		HAL_NVIC_SetPriority(TIM1_UP_IRQn,3,0);
+
+		HAL_NVIC_SetPriority(TIM1_UP_IRQn, 3, 0);
 		HAL_NVIC_EnableIRQ(TIM1_UP_IRQn);
 	}
-	
-	if(htim == &mytim2)	/* TIM2 CH1 PA0 Íâ²¿ÊäÈë¿Ú */
+
+	if (htim == &mytim2) /* TIM2 CH1 PA0 å¤–éƒ¨è¾“å…¥å£ */
 	{
 		__HAL_RCC_TIM2_CLK_ENABLE();
 		__HAL_RCC_GPIOA_CLK_ENABLE();
-		
+
 		GPIO_InitTypeDef GPIO_InitStruct = {0};
-		
+
 		GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
 		GPIO_InitStruct.Pin = GPIO_PIN_0;
 		GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-		GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH; 
+		GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
 		HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-		
-		HAL_NVIC_SetPriority(TIM2_IRQn,3,0);
+
+		HAL_NVIC_SetPriority(TIM2_IRQn, 3, 0);
 		HAL_NVIC_EnableIRQ(TIM2_IRQn);
 	}
 }
 
-
 void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef *htim)
 {
-	if(htim == &mytim1)	
+	if (htim == &mytim1)
 	{
-		__HAL_RCC_TIM1_CLK_ENABLE();		/* TIM1 CH1 PWM PA8  */
+		__HAL_RCC_TIM1_CLK_ENABLE();
 		__HAL_RCC_GPIOA_CLK_ENABLE();
-		__HAL_RCC_DMA1_CLK_ENABLE();			/* TIM1 CH1 PWM PA9  */
-		
-		
-		GPIO_InitTypeDef GPIO_InitStruct = {0};	
-		
-		GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+		__HAL_RCC_DMA1_CLK_ENABLE();
+
+		GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+		GPIO_InitStruct.Mode = GPIO_MODE_AF_PP; /* TIM1 CH1 PWM PA8  */
 		GPIO_InitStruct.Pin = GPIO_PIN_8;
 		GPIO_InitStruct.Pull = GPIO_NOPULL;
-		GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH; 
+		GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
 		HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-		
-		
-		HAL_NVIC_SetPriority(TIM1_CC_IRQn,3,0);
+
+		GPIO_InitStruct.Pin = GPIO_PIN_9; /* TIM1 CH2 PWM PA9  */
+		HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+		HAL_NVIC_SetPriority(TIM1_CC_IRQn, 3, 0); /* è®¾ç½®é€šé“ä¸­æ–­ä¼˜å…ˆçº§ å¯¹åº”é€šé“äºŒ ä¸­æ–­æ¨¡å¼ */
 		HAL_NVIC_EnableIRQ(TIM1_CC_IRQn);
-		
-																			
-		
-		
-		GPIO_InitStruct.Pin = GPIO_PIN_9;
+
+		GPIO_InitStruct.Pin = GPIO_PIN_10; /* TIM1 CH3 PWM PA10 */
 		HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-		
-		HAL_NVIC_SetPriority(DMA1_Channel2_IRQn,3,0);
-		HAL_NVIC_EnableIRQ(DMA1_Channel2_IRQn);
+
+		HAL_NVIC_SetPriority(DMA1_Channel6_IRQn, 3, 0); /* è®¾ç½®DMAä¼˜å…ˆçº§ å¯¹åº”é€šé“ä¸‰ DMAæ¨¡å¼ */
+		HAL_NVIC_EnableIRQ(DMA1_Channel6_IRQn);
+
+		HAL_NVIC_SetPriority(TIM1_UP_IRQn, 3, 0); /* è®¾ç½®å®šæ—¶å™¨æ›´æ–°ä¸­æ–­ä¼˜å…ˆçº§ */
+		HAL_NVIC_EnableIRQ(TIM1_UP_IRQn);
 	}
 }
-
-
-
-
-
-

@@ -577,6 +577,11 @@
               <FilePath>..\BspDriver\TIM2\tim2.c</FilePath>
             </File>
             <File>
+              <FileName>tim3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BspDriver\TIM3\tim3.c</FilePath>
+            </File>
+            <File>
               <FileName>key.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BspDriver\KEY\key.c</FilePath>

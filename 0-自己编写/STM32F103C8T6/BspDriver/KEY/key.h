@@ -1,8 +1,15 @@
+/*
+ * @Author: liuao 2494210546@qq.com
+ * @Date: 2023-10-29 18:45:22
+ * @LastEditors: liuao 2494210546@qq.com
+ * @LastEditTime: 2023-10-31 23:08:29
+ * @FilePath: \MDK-ARMe:\MY_CODE\F407CubeMX-New\CubeMX\0-鑷繁缂栧啓\STM32F103C8T6\BspDriver\KEY\key.h
+ * @Description: 杩欐槸榛樿璁剧疆,璇疯缃甡customMade`, 鎵撳紑koroFileHeader鏌ョ湅閰嶇疆 杩涜璁剧疆: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 #ifndef _KEY_H_
 #define _KEY_H_
 
 #include "main.h"
-
 
 #define key_s1_Pin GPIO_PIN_6
 #define key_s2_Pin GPIO_PIN_7
@@ -14,9 +21,8 @@
 #define key_s3_GPIO_Port GPIOB
 #define key_s4_GPIO_Port GPIOB
 
-
-#define UNDO_STATUS 	0		/* 松开时的电平 */
-#define DOWN_STATUS 1			/* 按下时的电平 */
+#define UNDO_STATUS 0 /* 鏉惧紑鏃剁殑鐢靛钩 */
+#define DOWN_STATUS 1 /* 鎸変笅鏃剁殑鐢靛钩 */
 
 enum key_status
 {
@@ -30,5 +36,3 @@ enum key_status
 void MY_Key_Config(void);
 uint8_t Get_key_with_undo(uint8_t waittime);
 #endif
-
-

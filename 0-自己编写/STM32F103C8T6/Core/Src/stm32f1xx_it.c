@@ -225,7 +225,11 @@ void TIM1_UP_IRQHandler(void)
 //			__HAL_TIM_CLEAR_IT(&mytim1, TIM_IT_UPDATE);
 //		}
 //	}
-	
+	HAL_TIM_IRQHandler(&mytim1);
+}
+
+void TIM1_CC_IRQHandler(void)
+{
 	HAL_TIM_IRQHandler(&mytim1);
 }
 
@@ -235,7 +239,7 @@ void TIM2_IRQHandler(void)
 }
 
 
-void DMA1_Channel2_IRQHandler(void)
+void DMA1_Channel6_IRQHandler(void)
 {
 	HAL_DMA_IRQHandler(&tim1_dma);
 }

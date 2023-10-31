@@ -1,78 +1,73 @@
 #include "./KEY/key.h"
 
-
 void MY_Key_Config(void)
 {
 	GPIO_InitTypeDef GPIO_InitStruct = {0};
 	__HAL_RCC_GPIOB_CLK_ENABLE();
-	
+
 	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-	GPIO_InitStruct.Pin = key_s1_Pin|key_s2_Pin|key_s3_Pin|key_s4_Pin;
+	GPIO_InitStruct.Pin = key_s1_Pin | key_s2_Pin | key_s3_Pin | key_s4_Pin;
 	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	
+
 	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 }
 
-
-
-
 /**
- * º¯Êý¹¦ÄÜ: ËÉ¿ª»ñÈ¡¼üÖµ
- * ÊäÈë²ÎÊý: Ïû¶¶Ê±¼ä
- * ·µ »Ø Öµ: °´ÏÂµÄ¼üÖµ
- * Ëµ    Ã÷: ÎÞËÀµÈ
+ * å‡½æ•°åŠŸèƒ½: æ¾å¼€èŽ·å–é”®å€¼
+ * è¾“å…¥å‚æ•°: æ¶ˆæŠ–æ—¶é—´
+ * è¿” å›ž å€¼: æŒ‰ä¸‹çš„é”®å€¼
+ * è¯´    æ˜Ž: æ— æ­»ç­‰
  */
 uint8_t Get_key_with_undo(uint8_t waittime)
 {
-	/* ±£´æuwtickµÄÖµ */
+	/* ä¿å­˜uwtickçš„å€¼ */
 	static uint32_t tick;
-	/* °´¼ü±êÖ¾Î» */
+	/* æŒ‰é”®æ ‡å¿—ä½ */
 	static uint8_t flag = 0;
-	/* ±£´æÄÇ¸ö°´¼ü°´ÏÂ */
+	/* ä¿å­˜é‚£ä¸ªæŒ‰é”®æŒ‰ä¸‹ */
 	static uint8_t down = 0;
-	uint8_t key_s1_status,key_s2_status,key_s3_status,key_s4_status;
-	
+	uint8_t key_s1_status, key_s2_status, key_s3_status, key_s4_status;
+
 	key_s1_status = HAL_GPIO_ReadPin(key_s1_GPIO_Port, key_s1_Pin);
 	key_s2_status = HAL_GPIO_ReadPin(key_s2_GPIO_Port, key_s2_Pin);
 	key_s3_status = HAL_GPIO_ReadPin(key_s3_GPIO_Port, key_s3_Pin);
 	key_s4_status = HAL_GPIO_ReadPin(key_s4_GPIO_Port, key_s4_Pin);
-	/* Èç¹ûÓÐ°¸¼þ°´ÏÂ ½øÈë if ±£³Öµ±Ç° uwtickµÄÖµ */
-	if(flag == 0 && (key_s1_status == DOWN_STATUS || key_s2_status == DOWN_STATUS || key_s3_status == DOWN_STATUS || key_s4_status == DOWN_STATUS))
+	/* å¦‚æžœæœ‰æ¡ˆä»¶æŒ‰ä¸‹ è¿›å…¥ if ä¿æŒå½“å‰ uwtickçš„å€¼ */
+	if (flag == 0 && (key_s1_status == DOWN_STATUS || key_s2_status == DOWN_STATUS || key_s3_status == DOWN_STATUS || key_s4_status == DOWN_STATUS))
 	{
 		flag = 1;
 		tick = uwTick;
 	}
-	/* ÉÏÒ»²½ÓÐ°´¼ü°´ÏÂºó µÈ´ý waittimeÊ±¼ä Èç¹û»¹ÊÇÂú×ãifÀïÃæµÄ°¸¼þ¼ì²â, ËµÃ÷È·ÊµÓÐ°´¼ü°´ÏÂ·µ»Ø±êºÅ */
-	if(flag == 1 &&  (uwTick - tick ) > waittime)
+	/* ä¸Šä¸€æ­¥æœ‰æŒ‰é”®æŒ‰ä¸‹åŽ ç­‰å¾… waittimeæ—¶é—´ å¦‚æžœè¿˜æ˜¯æ»¡è¶³ifé‡Œé¢çš„æ¡ˆä»¶æ£€æµ‹, è¯´æ˜Žç¡®å®žæœ‰æŒ‰é”®æŒ‰ä¸‹è¿”å›žæ ‡å· */
+	if (flag == 1 && (uwTick - tick) > waittime)
 	{
-		if(flag == 1 && key_s1_status == DOWN_STATUS && key_s2_status == UNDO_STATUS && key_s3_status == UNDO_STATUS && key_s4_status == UNDO_STATUS)
+		if (flag == 1 && key_s1_status == DOWN_STATUS && key_s2_status == UNDO_STATUS && key_s3_status == UNDO_STATUS && key_s4_status == UNDO_STATUS)
 		{
 			flag = 2;
 			down = s1_down;
 		}
-		else if(flag == 1 && key_s1_status == UNDO_STATUS && key_s2_status == DOWN_STATUS && key_s3_status == UNDO_STATUS && key_s4_status == UNDO_STATUS)
+		else if (flag == 1 && key_s1_status == UNDO_STATUS && key_s2_status == DOWN_STATUS && key_s3_status == UNDO_STATUS && key_s4_status == UNDO_STATUS)
 		{
 			flag = 2;
 			down = s2_down;
 		}
-		else if(flag == 1 && key_s1_status == UNDO_STATUS && key_s2_status == UNDO_STATUS && key_s3_status == DOWN_STATUS && key_s4_status == UNDO_STATUS)
+		else if (flag == 1 && key_s1_status == UNDO_STATUS && key_s2_status == UNDO_STATUS && key_s3_status == DOWN_STATUS && key_s4_status == UNDO_STATUS)
 		{
 			flag = 2;
 			down = s3_down;
 		}
-		else if(flag == 1 && key_s1_status == UNDO_STATUS && key_s2_status == UNDO_STATUS && key_s3_status == UNDO_STATUS && key_s4_status == DOWN_STATUS)
+		else if (flag == 1 && key_s1_status == UNDO_STATUS && key_s2_status == UNDO_STATUS && key_s3_status == UNDO_STATUS && key_s4_status == DOWN_STATUS)
 		{
 			flag = 2;
 			down = s4_down;
 		}
 	}
-	/* ÔÚÃ»ÓÐ°¸¼þ°´ÏÂÊ±Áîflag =0 µÈ´ý°´¼ü°´ÏÂ */
-	if(flag == 2 && key_s1_status == UNDO_STATUS && key_s2_status == UNDO_STATUS && key_s3_status == UNDO_STATUS && key_s4_status == UNDO_STATUS)
+	/* åœ¨æ²¡æœ‰æ¡ˆä»¶æŒ‰ä¸‹æ—¶ä»¤flag =0 ç­‰å¾…æŒ‰é”®æŒ‰ä¸‹ */
+	if (flag == 2 && key_s1_status == UNDO_STATUS && key_s2_status == UNDO_STATUS && key_s3_status == UNDO_STATUS && key_s4_status == UNDO_STATUS)
 	{
 		flag = 0;
 		return down;
 	}
 	return key_null;
 }
-

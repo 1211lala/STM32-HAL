@@ -1,3 +1,19 @@
+/*
+ * @Author: liuao 2494210546@qq.com
+ * @Date: 2023-10-29 18:27:46
+ * @LastEditors: liuao 2494210546@qq.com
+ * @LastEditTime: 2023-10-31 23:10:11
+ * @FilePath: \MDK-ARMe:\MY_CODE\F407CubeMX-New\CubeMX\0-自己编写\STM32F103C8T6\Core\Src\main.c
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+/*
+ * @Author: liuao 2494210546@qq.com
+ * @Date: 2023-10-29 18:27:46
+ * @LastEditors: liuao 2494210546@qq.com
+ * @LastEditTime: 2023-10-31 23:09:59
+ * @FilePath: \MDK-ARMe:\MY_CODE\F407CubeMX-New\CubeMX\0-自己编写\STM32F103C8T6\Core\Src\main.c
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
@@ -27,16 +43,16 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#pragma import(__use_no_semihosting)
-void _sys_exit(int x)
-{
-  x = x;
-}
-struct __FILE
-{
-  int handle;
-};
-FILE __stdout;
+//#pragma import(__use_no_semihosting)
+//void _sys_exit(int x)
+//{
+//  x = x;
+//}
+//struct __FILE
+//{
+//  int handle;
+//};
+//FILE __stdout;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -96,9 +112,9 @@ int main(void)
   MX_GPIO_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-
-	MY_TIM1_Chx_Pwm_Config(720, 10000, 5000);
-	MY_TIM2_CountMode_Config(1,5);
+	
+	MY_TIM1_Chx_Pwm_Config(7200, 5000, 1000);
+//	MY_TIM2_CountMode_Config(1,5);
 	MY_Key_Config();
 	
   /* USER CODE END 2 */
@@ -112,13 +128,12 @@ int main(void)
 		{
 			switch(key)
 			{
-				case(s1_down): __HAL_TIM_ENABLE_IT(&mytim1, TIM_IT_CC1); break;
-				case(s2_down): __HAL_TIM_DISABLE_IT(&mytim1, TIM_IT_CC1);break;
-				case(s3_down): HAL_TIM_PWM_Start_DMA(&mytim1, TIM_CHANNEL_2, (uint32_t*)tim1_dma_ch2_buf, 5);	break;
+				case(s1_down): __HAL_TIM_ENABLE_IT(&mytim1, TIM_IT_CC2); break;
+				case(s2_down): __HAL_TIM_DISABLE_IT(&mytim1, TIM_IT_CC2);break;
+				case(s3_down): 	HAL_TIM_PWM_Start_DMA(&mytim1, TIM_CHANNEL_3, (uint32_t*)tim1_dma_ch3_buf, 5); break;
 				case(s4_down): break;
 			}
 		}
-		
     /* USER CODE END WHILE */
 		
     /* USER CODE BEGIN 3 */
@@ -173,20 +188,22 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-/* ��ʱ�������ж� */
+/* 定时器更新中断 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
+	
 	if(htim->Instance == TIM1)
 	{
 		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+		usb_transmit((uint8_t*)"TIM1 UPDATE INTERRUPT\r\n", strlen((char*)"TIM2 UPDATE INTERRUPT\r\n"));
 	}
 	else if(htim->Instance == TIM2)
 	{
-		usb_transmit((uint8_t*)"TIM2 UPDATE INTERRUPT\r\n", strlen((char*)"TIM2 UPDATE INTERRUPT\r\n"));
+		usb_transmit((uint8_t*)"TIM2 UPDATE INTERRUPT\r\n", strlen((char*)"TIM2 UPDATE INTERRUPT\r\n"));	
 	}
 }
 
-/* ��ʱ�������ж� */
+/* 定时器触发中断 */
 void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim->Instance == TIM2)
@@ -196,22 +213,24 @@ void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim)
 	}
 }
 
-/* ��ʱ��PWM�ж� */
+/* 定时器PWM中断 */
 void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim->Instance == TIM1)
-	{																			
+	{									
 		switch(htim->Channel)
 		{
 			case(HAL_TIM_ACTIVE_CHANNEL_1):
-																			sprintf((char*)usb_buf, "TIM1 PWM CH1 INTERRUPT\r\n");
+																			sprintf((char*)usb_buf, "TIM1 PWM CH1\r\n");
 																			usb_transmit((uint8_t*)usb_buf, strlen((char*)usb_buf));
 																			break;
 			case(HAL_TIM_ACTIVE_CHANNEL_2): 
-																			sprintf((char*)usb_buf, "TIM1 PWM CH2 DMA\r\n");
+																			sprintf((char*)usb_buf, "TIM1 PWM CH2 INTERRUPT\r\n");
 																			usb_transmit((uint8_t*)usb_buf, strlen((char*)usb_buf));
 																			break;
-			case(HAL_TIM_ACTIVE_CHANNEL_3): break;
+			case(HAL_TIM_ACTIVE_CHANNEL_3): 
+																			sprintf((char*)usb_buf, "TIM1 PWM CH3 DMA\r\n");
+																			usb_transmit((uint8_t*)usb_buf, strlen((char*)usb_buf));break;
 			case(HAL_TIM_ACTIVE_CHANNEL_4): break;
 		}
 	}
