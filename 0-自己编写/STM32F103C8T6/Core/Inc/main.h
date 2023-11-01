@@ -40,6 +40,7 @@ extern "C" {
 #include "./KEY/key.h"
 #include "./TIM1/tim1.h"
 #include "./TIM2/tim2.h"
+#include "./TIM3/tim3.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

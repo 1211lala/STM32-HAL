@@ -39,3 +39,32 @@ void MY_TIM2_CountMode_Config(uint16_t psc, uint16_t period)
 	/* 开启定时器 并 开启更新中断 */
 	HAL_TIM_Base_Start_IT(&mytim2);
 }
+
+
+void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
+{
+	if (htim == &mytim1) /* TIM1 更新中断*/
+	{
+		__HAL_RCC_TIM1_CLK_ENABLE();
+
+		HAL_NVIC_SetPriority(TIM1_UP_IRQn, 3, 0);
+		HAL_NVIC_EnableIRQ(TIM1_UP_IRQn);
+	}
+
+	if (htim == &mytim2) /* TIM2 CH1 PA0 外部输入口 */
+	{
+		__HAL_RCC_TIM2_CLK_ENABLE();
+		__HAL_RCC_GPIOA_CLK_ENABLE();
+
+		GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+		GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+		GPIO_InitStruct.Pin = GPIO_PIN_0;
+		GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+		GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+		HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+		HAL_NVIC_SetPriority(TIM2_IRQn, 3, 0);
+		HAL_NVIC_EnableIRQ(TIM2_IRQn);
+	}
+}

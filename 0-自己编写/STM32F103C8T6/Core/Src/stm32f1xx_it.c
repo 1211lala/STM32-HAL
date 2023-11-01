@@ -1,4 +1,4 @@
-/* USER CODE BEGIN Header */
+ /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
   * @file    stm32f1xx_it.c
@@ -238,6 +238,10 @@ void TIM2_IRQHandler(void)
 	HAL_TIM_IRQHandler(&mytim2);
 }
 
+void TIM3_IRQHandler(void)
+{
+	HAL_TIM_IRQHandler(&mytim3);
+}
 
 void DMA1_Channel6_IRQHandler(void)
 {

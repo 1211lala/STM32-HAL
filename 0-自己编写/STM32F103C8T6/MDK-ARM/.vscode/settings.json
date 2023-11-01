@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "tim3.h": "c",
+        "usb_device.h": "c",
+        "main.h": "c",
+        "key.h": "c"
+    }
+}

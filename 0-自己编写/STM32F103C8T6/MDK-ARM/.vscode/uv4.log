@@ -1,9 +1,61 @@
-*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\SoftWare\Keil_MDK\ARM\ARMCC\Bin'
-Build target 'STM32F103C8T6'
-compiling main.c...
-compiling tim1.c...
-linking...
-Program Size: Code=16578 RO-data=302 RW-data=408 ZI-data=5888  
-FromELF: creating hex file...
-"STM32F103C8T6\STM32F103C8T6.axf" - 0 Error(s), 0 Warning(s).
-Build Time Elapsed:  00:00:05
+Load "STM32F103C8T6\\STM32F103C8T6.axf" 
+Set JLink Project File to "e:\MY_CODE\F407CubeMX-New\CubeMX\0-×Ô¼º±àÐ´\STM32F103C8T6\MDK-ARM\JLinkSettings.ini"* JLink Info: Device "STM32F103C8" selected.
+
+JLink info:
+------------
+DLL: V6.72 , compiled Apr 28 2020 10:53:04
+Firmware: J-Link ARM-OB STM32 compiled Aug 22 2012 19:52:04
+Hardware: V7.00
+S/N : 20090929 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+
+* JLink Info: Found SW-DP with ID 0x2BA01477
+* JLink Info: Found SW-DP with ID 0x2BA01477
+* JLink Info: Unknown DP version. Assuming DPv0
+* JLink Info: Scanning AP map to find all available APs
+* JLink Info: AP[1]: Stopped AP scan as end of AP map has been reached
+* JLink Info: AP[0]: AHB-AP (IDR: 0x24770011)
+* JLink Info: Iterating through AP map to find AHB-AP to use
+* JLink Info: AP[0]: Core found
+* JLink Info: AP[0]: AHB-AP ROM base: 0xE00FF000
+* JLink Info: CPUID register: 0x412FC231. Implementer code: 0x41 (ARM)
+* JLink Info: Found Cortex-M3 r2p1, Little endian.
+* JLink Info: FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: CoreSight components:
+* JLink Info: ROMTbl[0] @ E00FF000
+* JLink Info: ROMTbl[0][0]: E000E000, CID: B105E00D, PID: 000BB000 SCS
+* JLink Info: ROMTbl[0][1]: E0001000, CID: B105E00D, PID: 003BB002 DWT
+* JLink Info: ROMTbl[0][2]: E0002000, CID: B105E00D, PID: 002BB003 FPB
+* JLink Info: ROMTbl[0][3]: E0000000, CID: B105E00D, PID: 003BB001 ITM
+* JLink Info: ROMTbl[0][4]: E0040000, CID: B105900D, PID: 003BB923 TPIU-Lite
+ROMTableAddr = 0xE00FF000
+* JLink Info: Reset: Halt core after reset via DEMCR.VC_CORERESET.
+* JLink Info: Reset: Reset device via AIRCR.SYSRESETREQ.
+
+Target info:
+------------
+Device: STM32F103C8
+VTarget = 3.300V
+State of Pins: TCK: 0, TDI: 0, TDO: 1, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+
+Erase Done.***JLink Error: Communication timed out: Requested 4 bytes, received 0 bytes !
+***JLink Error: Can not read register 15 (R15) while CPU is running
+**JLink Warning: CPU could not be halted
+***JLink Error: Could not read memory location 0x20000000 when trying to clear soft RAM BP
+Failed to clear soft BP in RAM @ 0x20000000
+Could not start CPU core. (ErrorCode: -1)
+***JLink Error: Can not read register 20 (CFBP) while CPU is running
+**JLink Warning: CPU could not be halted
+***JLink Error: Could not start CPU core. (ErrorCode: -1)
+***JLink Error: CPU is not halted
+***JLink Error: Can not read register 15 (R15) while CPU is running
+**JLink Warning: CPU could not be halted
+***JLink Error: Could not read memory location 0x20000000 when trying to clear soft RAM BP
+Failed to clear soft BP in RAM @ 0x20000000
+Could not start CPU core. (ErrorCode: -1)
+Programming Failed!Error: Flash Download failed  -  "Cortex-M3"
+Flash Load finished at 21:00:30

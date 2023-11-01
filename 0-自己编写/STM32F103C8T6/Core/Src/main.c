@@ -1,19 +1,4 @@
-/*
- * @Author: liuao 2494210546@qq.com
- * @Date: 2023-10-29 18:27:46
- * @LastEditors: liuao 2494210546@qq.com
- * @LastEditTime: 2023-10-31 23:10:11
- * @FilePath: \MDK-ARMe:\MY_CODE\F407CubeMX-New\CubeMX\0-自己编写\STM32F103C8T6\Core\Src\main.c
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
-/*
- * @Author: liuao 2494210546@qq.com
- * @Date: 2023-10-29 18:27:46
- * @LastEditors: liuao 2494210546@qq.com
- * @LastEditTime: 2023-10-31 23:09:59
- * @FilePath: \MDK-ARMe:\MY_CODE\F407CubeMX-New\CubeMX\0-自己编写\STM32F103C8T6\Core\Src\main.c
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
+
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
@@ -69,6 +54,9 @@
 
 /* USER CODE BEGIN PV */
 uint8_t usb_buf[40];
+uint32_t count = 0;
+uint32_t ccr1 = 0;
+uint8_t flag = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -113,8 +101,9 @@ int main(void)
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
 	
-	MY_TIM1_Chx_Pwm_Config(7200, 5000, 1000);
+//	MY_TIM1_Chx_Pwm_Config(7200, 5000, 1000);
 //	MY_TIM2_CountMode_Config(1,5);
+  MY_TIM3_Chx_IC_Config(72-1, 10000-1);	/* 10ms */
 	MY_Key_Config();
 	
   /* USER CODE END 2 */
@@ -134,6 +123,35 @@ int main(void)
 				case(s4_down): break;
 			}
 		}
+		
+		/* 上升沿触发*/
+    if( flag == 0 && __HAL_TIM_GET_FLAG(&mytim3, TIM_FLAG_CC1) == SET)
+    {
+			count = 0;/* 清除上一次记录 */
+			flag = 1;	/* 开始计时 */
+			__HAL_TIM_CLEAR_FLAG(&mytim3, TIM_FLAG_CC1);
+			ccr1 = TIM3->CCR1;
+      sprintf((char*)usb_buf,"start\r\n");
+      usb_transmit(usb_buf,strlen((char*)usb_buf));
+			
+			/* 下降沿触发*/
+			tim3_chx.ICPolarity = TIM_ICPOLARITY_FALLING;
+			HAL_TIM_IC_ConfigChannel(&mytim3, &tim3_chx, TIM_CHANNEL_1);
+    }
+		
+		/* 下降沿触发*/
+    if(flag == 1 && __HAL_TIM_GET_FLAG(&mytim3, TIM_FLAG_CC1) == SET)
+    {
+			flag = 0;	/* 停止计时 */
+			__HAL_TIM_CLEAR_FLAG(&mytim3, TIM_FLAG_CC1);
+			sprintf((char*)usb_buf,"stop\r\n");
+      usb_transmit(usb_buf,strlen((char*)usb_buf));
+			
+			/* 设置上升沿触发*/
+			tim3_chx.ICPolarity = TIM_ICPOLARITY_RISING;
+			HAL_TIM_IC_ConfigChannel(&mytim3, &tim3_chx, TIM_CHANNEL_1);
+    }
+		
     /* USER CODE END WHILE */
 		
     /* USER CODE BEGIN 3 */
@@ -195,11 +213,27 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	if(htim->Instance == TIM1)
 	{
 		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-		usb_transmit((uint8_t*)"TIM1 UPDATE INTERRUPT\r\n", strlen((char*)"TIM2 UPDATE INTERRUPT\r\n"));
-	}
-	else if(htim->Instance == TIM2)
+		usb_transmit((uint8_t*)"TIM1 UPDATE INTERRUPT\r\n", strlen((char*)"TIM1 UPDATE INTERRUPT\r\n"));
+	}else if(htim->Instance == TIM2)
 	{
 		usb_transmit((uint8_t*)"TIM2 UPDATE INTERRUPT\r\n", strlen((char*)"TIM2 UPDATE INTERRUPT\r\n"));	
+	}else if(htim->Instance == TIM3)
+	{
+		if(flag == 1)
+		{
+			float time = 0;
+			
+			if(count)
+			{
+				time = (10000 - ccr1 + (count)*10000 + TIM3->CNT) * 0.000001;
+			}else
+			{
+				time = (10000 - ccr1) * 0.000001;
+			}
+			sprintf((char*)usb_buf, "down time %.4f \r\n", time);
+			usb_transmit((uint8_t*)usb_buf, strlen((char*)usb_buf));
+			count += 1;
+		}
 	}
 }
 
@@ -208,6 +242,8 @@ void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim->Instance == TIM2)
 	{		
+		
+
 		sprintf((char*)usb_buf, "TIM2 TRIG INTERRUPT%d \r\n", TIM2->CNT);
 		usb_transmit((uint8_t*)usb_buf, strlen((char*)usb_buf));
 	}

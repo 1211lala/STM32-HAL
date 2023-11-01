@@ -22,6 +22,7 @@
                 "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\0-自己编写\\STM32F103C8T6\\Middlewares\\ST\\STM32_USB_Device_Library\\Class\\CDC\\Src",
                 "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\0-自己编写\\STM32F103C8T6\\BspDriver\\TIM1",
                 "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\0-自己编写\\STM32F103C8T6\\BspDriver\\TIM2",
+                "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\0-自己编写\\STM32F103C8T6\\BspDriver\\TIM3",
                 "e:\\MY_CODE\\F407CubeMX-New\\CubeMX\\0-自己编写\\STM32F103C8T6\\BspDriver\\KEY"
             ],
             "defines": [
