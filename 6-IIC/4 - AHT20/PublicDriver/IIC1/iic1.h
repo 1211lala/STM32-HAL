@@ -1,0 +1,43 @@
+#ifndef __IIC_H
+#define __IIC_H
+
+
+#include "main.h"
+#include "gpio.h"
+/******************************************************************************************/
+/* 引脚 定义 */
+#define IIC_SCL_PORT               			GPIOA
+#define IIC_SCL_PIN                			GPIO_PIN_3
+
+#define IIC_SDA_PORT               			GPIOA
+#define IIC_SDA_PIN                			GPIO_PIN_1
+
+/******************************************************************************************/
+/* IO操作 */
+#define IIC_SCL(x)        do{ x ? \
+                              HAL_GPIO_WritePin(IIC_SCL_PORT, IIC_SCL_PIN, GPIO_PIN_SET) : \
+                              HAL_GPIO_WritePin(IIC_SCL_PORT, IIC_SCL_PIN, GPIO_PIN_RESET); \
+                          }while(0)       /* SCL */
+
+#define IIC_SDA(x)        do{ x ? \
+                              HAL_GPIO_WritePin(IIC_SDA_PORT, IIC_SDA_PIN, GPIO_PIN_SET) : \
+                              HAL_GPIO_WritePin(IIC_SDA_PORT, IIC_SDA_PIN, GPIO_PIN_RESET); \
+                          }while(0)       /* SDA */
+
+#define IIC_READ_SDA     	HAL_GPIO_ReadPin(IIC_SDA_PORT, IIC_SDA_PIN) /* 读取SDA */
+
+/******************************************************************************************/
+													
+													
+/* IIC所有操作函数 */
+void iic1_init(void);            /* 初始化IIC的IO口 */
+void iic1_start(void);           /* 发送IIC开始信号 */
+void iic1_stop(void);            /* 发送IIC停止信号 */
+void iic1_ack(void);             /* IIC发送ACK信号 */
+void iic1_nack(void);            /* IIC不发送ACK信号 */
+uint8_t iic1_wait_ack(void);     /* IIC等待ACK信号 */
+void iic1_send_byte(uint8_t txd);/* IIC发送一个字节 */
+uint8_t iic1_read_byte(unsigned char ack);/* IIC读取一个字节 */
+
+#endif
+
