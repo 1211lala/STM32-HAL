@@ -247,4 +247,9 @@ void DMA1_Channel6_IRQHandler(void)
 {
 	HAL_DMA_IRQHandler(&tim1_dma);
 }
+
+void USART1_IRQHandler(void)
+{
+	HAL_UART_IRQHandler(&myuart1);
+}
 /* USER CODE END 1 */

@@ -41,6 +41,7 @@ extern "C" {
 #include "./TIM1/tim1.h"
 #include "./TIM2/tim2.h"
 #include "./TIM3/tim3.h"
+#include "./USART1/usart1.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

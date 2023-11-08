@@ -54,6 +54,7 @@
 
 /* USER CODE BEGIN PV */
 uint8_t usb_buf[40];
+uint8_t uart1_buf[40];
 uint32_t count = 0;
 uint32_t ccr1 = 0;
 uint8_t flag = 0;
@@ -103,7 +104,12 @@ int main(void)
 	
 //	MY_TIM1_Chx_Pwm_Config(7200, 5000, 1000);
 //	MY_TIM2_CountMode_Config(1,5);
-  MY_TIM3_Chx_IC_Config(72-1, 10000-1);	/* 10ms */
+//  MY_TIM3_Chx_IC_Config(72-1, 10000-1);	/* 10ms */
+	
+
+	my_uasrt1_uart_init(115200);
+//	HAL_UART_Receive_IT(&myuart1, uart1_buf, 1);
+	HAL_UARTEx_ReceiveToIdle_IT(&myuart1, uart1_buf, 40);
 	MY_Key_Config();
 	
   /* USER CODE END 2 */
@@ -112,18 +118,21 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		HAL_Delay(100);
+		
 		uint8_t key = Get_key_with_undo(30);
 		if(key != key_null)
 		{
 			switch(key)
 			{
-				case(s1_down): __HAL_TIM_ENABLE_IT(&mytim1, TIM_IT_CC2); break;
-				case(s2_down): __HAL_TIM_DISABLE_IT(&mytim1, TIM_IT_CC2);break;
-				case(s3_down): 	HAL_TIM_PWM_Start_DMA(&mytim1, TIM_CHANNEL_3, (uint32_t*)tim1_dma_ch3_buf, 5); break;
+				case(s1_down): break;
+				case(s2_down): break;
+				case(s3_down): break;
 				case(s4_down): break;
 			}
 		}
 		
+		#if 0
 		/* 上升沿触发*/
     if( flag == 0 && __HAL_TIM_GET_FLAG(&mytim3, TIM_FLAG_CC1) == SET)
     {
@@ -151,7 +160,7 @@ int main(void)
 			tim3_chx.ICPolarity = TIM_ICPOLARITY_RISING;
 			HAL_TIM_IC_ConfigChannel(&mytim3, &tim3_chx, TIM_CHANNEL_1);
     }
-		
+		#endif
     /* USER CODE END WHILE */
 		
     /* USER CODE BEGIN 3 */
@@ -269,6 +278,33 @@ void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
 																			usb_transmit((uint8_t*)usb_buf, strlen((char*)usb_buf));break;
 			case(HAL_TIM_ACTIVE_CHANNEL_4): break;
 		}
+	}
+}
+
+/* 串口一的接收中断回调函数 */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if(huart == &myuart1)
+	{
+		HAL_UART_Transmit(&myuart1, "int:", 4, 0xff);
+		HAL_UART_Transmit(&myuart1, &uart1_buf[0], 1, 0xff);
+		
+		HAL_UART_Receive_IT(&myuart1, uart1_buf, 1);
+	}
+}
+
+
+/* 串口一的IDLE事件回调函数 */
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
+{
+	if(huart == &myuart1)
+	{
+		uart1_buf[Size] = '\0';
+		
+		HAL_UART_Transmit(&myuart1, "ent:", 4, 0xff);
+		HAL_UART_Transmit(&myuart1, uart1_buf, Size, 0xff);
+		
+		HAL_UARTEx_ReceiveToIdle_IT(&myuart1, uart1_buf, 40);
 	}
 }
 /* USER CODE END 4 */
