@@ -202,7 +202,7 @@ int fputc(int ch, FILE *f)
 /* 串口二转485 */
 void RS485_Send_Meg(uint8_t *buf, uint8_t len)
 {
-	HAL_GPIO_WritePin(RE_485_GPIO_Port,RE_485_Pin,GPIO_PIN_SET);						/* 使能接收 */
+	HAL_GPIO_WritePin(RE_485_GPIO_Port,RE_485_Pin,GPIO_PIN_SET);						/* 使能发送 */
 	HAL_UART_Transmit(&huart2, buf, len, 0xff);
 //	while(__HAL_UART_GET_FLAG(&huart2, UART_FLAG_TC) == SET);
 	
